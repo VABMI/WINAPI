@@ -36,6 +36,8 @@ HBITMAP hlogo,hgener;
 
 HINSTANCE   hInst;
 HICON       main_icon;
+
+HCURSOR hCursor;
 //----------------------------------------------------------------
 void img(){
 //	hlogo=LoadImage(NULL, (LPCSTR)L"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\BMP.png", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_LOADTRANSPARENT);
@@ -83,6 +85,21 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
         else
             MessageBox(hwnd, "Could not load small icon!", "Error", MB_OK | MB_ICONERROR);
 
+
+
+		hCursor = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\cur197.ani");
+		SetCursor(hCursor);
+  
+
+		
+		hCursor = LoadCursorFromFile("cur197.ani");
+		SetCursor(hCursor);
+
+	//	int GCL_Hcursor = -12; //GCL_HCURSOR
+hCursor = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\cur197.ani");
+SetCursor(hCursor);
+SetClassLong(hwnd, -12, (DWORD)hCursor);
+  
 		break;
 		
 		case WM_COMMAND:
@@ -141,6 +158,8 @@ wc.style=CS_DBLCLKS;
 wc.lpfnWndProc=(WNDPROC)&window_main_function_chvenia;
 wc.lpszClassName="12";
 wc.hbrBackground=(HBRUSH)CreateSolidBrush(RGB(200,200,20));
+wc.hCursor=LoadCursor(NULL,IDC_WAIT);
+
 //wc.hIcon = LoadIcon(NULL,IDI_QUESTION);
 ///wc.hIcon=(HICON)LoadImage(0,"c:\\1.ico",IMAGE_ICON,16,16,LR_LOADFROMFILE);
 
@@ -163,7 +182,7 @@ if(RegisterClass(&wc)==0)
 style=WS_VISIBLE|WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN;
 X=10;Y=30;W=750;H=500;
 hwnd=CreateWindow(wc.lpszClassName,"Main",style,X,Y,W,H,0,0,0,0);
-hlogom=CreateWindowW(L"static",NULL,WS_VISIBLE|WS_CHILD|SS_BITMAP|WS_BORDER|WS_OVERLAPPEDWINDOW,350,60,250,200,hwnd,NULL,NULL,NULL);
+hlogom=CreateWindowW(L"static",NULL,WS_VISIBLE|WS_CHILD|SS_BITMAP|WS_BORDER,350,60,250,200,hwnd,NULL,NULL,NULL);
 //DialogBox(hinstance,MAKEINTRESOURCE(IDB_DIALOG1),0,window_main_function_chvenia);
 
 
