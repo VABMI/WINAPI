@@ -19,7 +19,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 	    	
 	        for (long int i=3; i<ini; i=i+2) 
 			{
-        	for (long int j=2; j<=(floor(i/2)-i); j=j++)
+        	for (long int j=2; j<=i; j=j++)
         		{
             	if (i % j == 0) 
                 break;
