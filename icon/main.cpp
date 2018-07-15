@@ -17,9 +17,10 @@
 #include "on_destroy_msg.cpp"
 
 
+
 #pragma comment(lib,"comctl32.lib")
 
-
+#define MYBITMAP L"C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP";
 
 #define IDR_MYMENU 101
 #define IDI_MYICON 201
@@ -37,7 +38,13 @@ HBITMAP hlogo,hgener;
 HINSTANCE   hInst;
 HICON       main_icon;
 
+HBITMAP hImage;
 HCURSOR hCursor;
+
+///////////// bitmap /////////
+
+HWND container, picture;
+HBITMAP mybitmap;
 //----------------------------------------------------------------
 void img(){
 //	hlogo=LoadImage(NULL, (LPCSTR)L"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\BMP.png", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_LOADTRANSPARENT);
@@ -50,6 +57,7 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 	switch(message)
 	{
 		case WM_CREATE:
+
 	/*img();
 		//	SendMessageW(hlogom,STM_SETIMAGE,IMAGE_BITMAP,(LPARAM)hlogo); 
 			
@@ -69,7 +77,8 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 			// HMENU hMenu, hSubMenu;
 	
 	*/
-
+			/////////////////////////////////// aqedan 
+	
   
         HICON hIcon, hIconSm;
 
@@ -185,9 +194,24 @@ hwnd=CreateWindow(wc.lpszClassName,"Main",style,X,Y,W,H,0,0,0,0);
 hlogom=CreateWindowW(L"static",NULL,WS_VISIBLE|WS_CHILD|SS_BITMAP|WS_BORDER,350,60,250,200,hwnd,NULL,NULL,NULL);
 //DialogBox(hinstance,MAKEINTRESOURCE(IDB_DIALOG1),0,window_main_function_chvenia);
 
+/*
+hImage = (HBITMAP)LoadBitmap(NULL,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\BMP.png", IMAGE_ICON, 100, 100, LR_LOADFROMFILE);
+SendMessage(hlogom, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hImage);
 
-	
-MSG msg;
+
+
+
+ mybitmap = (BITMAP)LoadBitmap(hInst, MAKEINTRESOURCE("C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP"));
+     SendDlgItemMessage(container, PICTURE, STM_SETIMAGE, (WPARAM)"C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP", (LPARAM)mybitmap);
+	 */
+
+  mybitmap= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+//  mybitmap=(HBITMAP)LoadBitmap(NULL, MAKEINTRESOURCE("C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP"));
+        if(mybitmap)
+            SendMessage(hlogom, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)mybitmap);
+		else
+			 MessageBox(hwnd, "Could not load Image !", "Error", MB_OK | MB_ICONERROR);
+	MSG msg;
 	while(GetMessage(&msg,0,0,0))
 	{
 	TranslateMessage(&msg);

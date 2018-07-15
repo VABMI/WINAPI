@@ -1,4 +1,4 @@
-﻿Build started 7/14/2018 8:38:19 AM.
+﻿Build started 7/14/2018 1:37:29 PM.
      1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\1\main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\main.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -19,9 +19,9 @@
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\functions.cpp(158): warning C4715: 'select_font' : not all control paths return a value
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(191): warning C4700: uninitialized local variable 'hedit' used
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(41): warning C4700: uninitialized local variable 'lpr' used
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(129): warning C4715: 'WinMain' : not all control paths return a value
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(143): warning C4715: 'WinMain' : not all control paths return a value
        ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\Debug\main.exe.embed.manifest.res" .\Debug\main_manifest.rc 
+         All outputs are up-to-date.
        Link:
          F:\New Folder (1)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\main.exe" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:".\Debug\main.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\1\Debug\main.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\main.lib" /MACHINE:X86 .\Debug\main.exe.embed.manifest.res
          .\Debug\main.obj
@@ -40,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.59
+Time Elapsed 00:00:04.11

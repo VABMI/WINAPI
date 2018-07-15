@@ -1,4 +1,4 @@
-﻿Build started 7/14/2018 1:08:21 PM.
+﻿Build started 7/14/2018 11:37:58 PM.
      1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\icon\main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\main.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -18,7 +18,7 @@
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\functions.cpp(51): warning C4715: 'create_menu' : not all control paths return a value
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\cmd_msg.cpp(87): warning C4700: uninitialized local variable 'hdcMem' used
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\cmd_msg.cpp(158): warning C4700: uninitialized local variable 'hedit' used
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\main.cpp(200): warning C4715: 'WinMain' : not all control paths return a value
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\main.cpp(219): warning C4715: 'WinMain' : not all control paths return a value
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -39,4 +39,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.89
+Time Elapsed 00:00:07.38

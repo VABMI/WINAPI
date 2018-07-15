@@ -16,7 +16,7 @@
 #pragma comment(lib,"comctl32.lib")
 
 //----------------------------------------------------------------
-
+HCURSOR hCursor;
 //----------------------------------------------------------------
 
 long __stdcall vaxo(HWND hwnd,unsigned int message, unsigned int wparam,long lparam)
@@ -30,10 +30,10 @@ long __stdcall vaxo(HWND hwnd,unsigned int message, unsigned int wparam,long lpa
 	SetWindowLong(editaa,GWL_ID,0);
 	SetWindowLong(editaa,GWL_HINSTANCE,0);
 	SetWindowLong(editaa,GWL_EXSTYLE,0); 
-	SetWindowLong(editaa,GWL_HWNDPARENT,0); 
+	SetWindowLong(editaa,GWL_HWNDPARENT,1); 
  	SetWindowLong(editaa,GWL_STYLE,WS_VISIBLE|WS_OVERLAPPEDWINDOW|WS_BORDER|ES_MULTILINE|ES_CENTER|WS_VSCROLL);	
-	
-		*/	
+	*/
+		
 		break;
 	
 	case WM_SIZE:
@@ -52,6 +52,20 @@ long __stdcall vaxo(HWND hwnd,unsigned int message, unsigned int wparam,long lpa
 		break;
 		
 		case WM_COMMAND:
+
+
+		case 70000:
+		
+			if(HIWORD(wparam)==EN_SETFOCUS){
+		 			
+		 		//	MessageBox(hwnd,"asdasd","asdasd",1);
+				hCursor = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Desktop\\cur1091.ani");
+SetCursor(hCursor);
+SetClassLong(editaa, -12, (DWORD)hCursor);
+				 }
+
+
+			break;
 		on_cmd(hwnd,message,wparam,lparam);
 
 		break;
