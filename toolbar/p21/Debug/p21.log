@@ -1,0 +1,25 @@
+﻿Build started 7/24/2018 5:57:45 AM.
+     1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\toolbar\p21\p21.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating ".\Debug\p21.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         F:\New Folder (1)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt p21.cpp
+         p21.cpp
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(20): error C2065: 'ID_TOOLBAR' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(30): error C2065: 'IDB_BUTTONS' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(31): error C2065: 'NUM_BUTTON_BITMAPS' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(35): error C2065: 'IDS_CUT' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(35): error C2065: 'MAX_LEN' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(38): error C2065: 'IDS_COPY' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(38): error C2065: 'MAX_LEN' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(43): error C2065: 'IDS_PASTE' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(43): error C2065: 'MAX_LEN' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(48): error C2065: 'IDM_CUT' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(56): error C2065: 'IDM_COPY' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(63): error C2065: 'IDM_PASTE' : undeclared identifier
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\toolbar\p21\p21.cpp(69): error C2065: 'NUM_BUTTONS' : undeclared identifier
+     1>Done Building Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\toolbar\p21\p21.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.89

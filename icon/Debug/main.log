@@ -1,4 +1,4 @@
-﻿Build started 7/14/2018 11:37:58 PM.
+﻿Build started 7/21/2018 4:16:49 AM.
      1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\icon\main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\main.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -15,10 +15,11 @@
                  f:\new folder (1)\vc\include\stdio.h(371) : see declaration of 'sprintf'
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\paint_msg.cpp(11): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  f:\new folder (1)\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\main.cpp(57): warning C4101: 'btn' : unreferenced local variable
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\functions.cpp(51): warning C4715: 'create_menu' : not all control paths return a value
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\cmd_msg.cpp(87): warning C4700: uninitialized local variable 'hdcMem' used
      1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\cmd_msg.cpp(158): warning C4700: uninitialized local variable 'hedit' used
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\main.cpp(219): warning C4715: 'WinMain' : not all control paths return a value
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\icon\main.cpp(281): warning C4715: 'WinMain' : not all control paths return a value
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -39,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.38
+Time Elapsed 00:00:07.26

@@ -1,4 +1,4 @@
-#include <windows.h>
+.#include <windows.h>
 #include <string>
 #include <fstream>
 #include <winver.h>
@@ -31,7 +31,7 @@
 
 
 
-HWND hlogom;
+HWND hlogom,buton;
 HBITMAP hlogo,hgener;
 //HICON hIconSm;
 
@@ -42,9 +42,9 @@ HBITMAP hImage;
 HCURSOR hCursor;
 
 ///////////// bitmap /////////
-
+	HWND statica;
 HWND container, picture;
-HBITMAP mybitmap;
+HBITMAP mybitmap,mybut;
 //----------------------------------------------------------------
 void img(){
 //	hlogo=LoadImage(NULL, (LPCSTR)L"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\BMP.png", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_LOADTRANSPARENT);
@@ -54,6 +54,7 @@ void img(){
 //----------------------------------------------------------------
 long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsigned int wparam,long lparam)
 {
+	HWND btn;
 	switch(message)
 	{
 		case WM_CREATE:
@@ -78,7 +79,11 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 	
 	*/
 			/////////////////////////////////// aqedan 
-	
+
+
+
+
+	///////////////////////////////////// iconebi 
   
         HICON hIcon, hIconSm;
 
@@ -94,8 +99,8 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
         else
             MessageBox(hwnd, "Could not load small icon!", "Error", MB_OK | MB_ICONERROR);
 
-
-
+		///////////////////////////// end icon 
+		/////////////    cursorebi
 		hCursor = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\cur197.ani");
 		SetCursor(hCursor);
   
@@ -104,16 +109,18 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 		hCursor = LoadCursorFromFile("cur197.ani");
 		SetCursor(hCursor);
 
+	
+
 	//	int GCL_Hcursor = -12; //GCL_HCURSOR
 hCursor = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\cur197.ani");
 SetCursor(hCursor);
 SetClassLong(hwnd, -12, (DWORD)hCursor);
-  
+//////////////////////////////////// end cursor
 		break;
 		
 		case WM_COMMAND:
 	
-		on_cmd(hwnd,message,wparam,lparam);
+	//	on_cmd(hwnd,message,wparam,lparam);
 		break;
 		
 		case WM_RBUTTONDOWN:
@@ -122,7 +129,7 @@ SetClassLong(hwnd, -12, (DWORD)hCursor);
 		case WM_RBUTTONDBLCLK:
 
 		case WM_LBUTTONDBLCLK:
-		on_mouse(hwnd,message,wparam,lparam);
+	//	on_mouse(hwnd,message,wparam,lparam);
 		break;
 
 		case WM_PAINT:
@@ -130,9 +137,18 @@ SetClassLong(hwnd, -12, (DWORD)hCursor);
 		break;
 
 		case WM_KEYDOWN:
-		on_kbd(hwnd,message,wparam,lparam);
-		break;
 
+		
+		break;
+		case WM_SIZE:
+			/*
+				    statica=GetDlgItem(hwnd,123);
+			RECT r;
+			GetClientRect(hwnd,&r);
+			MoveWindow(statica,10,10,r.right-20,r.bottom-20,1);
+			InvalidateRect(statica,0,1);
+			*/
+			break;
 		case WM_CTLCOLOREDIT:
 		{
 		HWND ctrl=(HWND)lparam;
@@ -166,7 +182,8 @@ ZeroMemory(&wc,sizeof(WNDCLASS));
 wc.style=CS_DBLCLKS;
 wc.lpfnWndProc=(WNDPROC)&window_main_function_chvenia;
 wc.lpszClassName="12";
-wc.hbrBackground=(HBRUSH)CreateSolidBrush(RGB(200,200,20));
+		wc.hbrBackground=(HBRUSH)CreateSolidBrush(RGB(200,200,20));
+  //wc.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
 wc.hCursor=LoadCursor(NULL,IDC_WAIT);
 
 //wc.hIcon = LoadIcon(NULL,IDI_QUESTION);
@@ -177,21 +194,29 @@ wc.hCursor=LoadCursor(NULL,IDC_WAIT);
  //   wc.hIcon  = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MYICON));
   // wc.hIconSm  = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MYICON), IMAGE_ICON, 16, 16, 0);
 
-
-
-
 if(RegisterClass(&wc)==0)
 	{
 	MessageBox(hwnd,"RegisterClass error",0,0);
 	return 0;
 	}
-
+  
 
 //mtavari fanjara:
 style=WS_VISIBLE|WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN;
 X=10;Y=30;W=750;H=500;
 hwnd=CreateWindow(wc.lpszClassName,"Main",style,X,Y,W,H,0,0,0,0);
-hlogom=CreateWindowW(L"static",NULL,WS_VISIBLE|WS_CHILD|SS_BITMAP|WS_BORDER,350,60,250,200,hwnd,NULL,NULL,NULL);
+ RECT r;
+GetClientRect(hwnd,&r);
+
+
+hlogom=CreateWindowW(L"static",NULL,WS_VISIBLE|WS_CHILD|SS_BITMAP|WS_BORDER,10,10, 300,300,hwnd,(HMENU)123,NULL,NULL);
+buton=CreateWindowW(L"Button",NULL,BS_BITMAP|WS_VISIBLE|WS_CHILD,350,10, 320,320,hwnd,(HMENU)124,NULL,NULL);
+
+
+
+
+
+
 //DialogBox(hinstance,MAKEINTRESOURCE(IDB_DIALOG1),0,window_main_function_chvenia);
 
 /*
@@ -205,12 +230,48 @@ SendMessage(hlogom, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hImage);
      SendDlgItemMessage(container, PICTURE, STM_SETIMAGE, (WPARAM)"C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP", (LPARAM)mybitmap);
 	 */
 
-  mybitmap= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
+
+//////////////////////////////////// -------- BMP suratis chasma main window------------- ///////////////////////
+
+		mybitmap= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
+      mybut= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
+//	mybut= (HBITMAP)LoadImage(GetModuleHandle(NULL),MAKEINTRESOURCE("C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP"),IMAGE_BITMAP,NULL,NULL,LR_DEFAULTCOLOR);
 //  mybitmap=(HBITMAP)LoadBitmap(NULL, MAKEINTRESOURCE("C:\\Users\\vaxoa\\OneDrive\\Desktop\\MARBLES.BMP"));
         if(mybitmap)
-            SendMessage(hlogom, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)mybitmap);
-		else
+		{
+            SendMessage(buton, (UINT)BM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)mybut);
+			SendMessage(hlogom,STM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)mybut);
+		}
+		
+		else{
 			 MessageBox(hwnd, "Could not load Image !", "Error", MB_OK | MB_ICONERROR);
+			}
+/////////////////---------------- end BMP ------------------////////////////////////////////
+		///////////////////////////////////////////////////////////////////
+		////// -------------gilakistvis kursoris chasma -----------------///////////////
+		hCursor = LoadCursorFromFile("too994.ani");
+
+		SendMessage(buton, WM_SETCURSOR, 0, (LPARAM) hCursor);
+		SetWindowLong(buton, GCL_HCURSOR, (LONG)hCursor);
+		SetWindowLongPtr(buton, GCL_HCURSOR, (LONG_PTR)hCursor);
+
+		// SetClassLong (buton, GCL_HCURSOR, (LONG) LoadCursor (NULL, IDC_CROSS)); //// standartuli kursoris chasma
+		 SetClassLong (buton, GCL_HCURSOR, (LONG) hCursor);
+
+
+
+			 ///// ---------- end ------------////////////
+		/////////////////////////////////////////////////
+
+
+	//	ShowWindow(buton,SW_HIDE);
+	//	ShowWindow(buton,SW_SHOW);
+
+		//HRGN hrgn;
+		//	hrgn=CreateEllipticRgn(10,10,10,10);
+	//		SetWindowRgn(buton,hrgn,1);
+
 	MSG msg;
 	while(GetMessage(&msg,0,0,0))
 	{

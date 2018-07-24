@@ -1,4 +1,4 @@
-﻿Build started 7/14/2018 1:37:29 PM.
+﻿Build started 7/21/2018 10:04:50 AM.
      1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\1\main.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\main.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -7,19 +7,21 @@
          main.cpp
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\functions.cpp(118): warning C4101: 'rgbPrev' : unreferenced local variable
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\functions.cpp(166): warning C4101: 'hbrush' : unreferenced local variable
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\on_create_msg.cpp(41): warning C4101: 'hrgn' : unreferenced local variable
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(172): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\on_create_msg.cpp(51): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\on_create_msg.cpp(60): warning C4101: 'hrgn' : unreferenced local variable
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(244): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  f:\new folder (1)\vc\include\string.h(110) : see declaration of 'strcat'
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(188): warning C4244: 'argument' : conversion from '__int64' to 'int', possible loss of data
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(190): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(260): warning C4244: 'argument' : conversion from '__int64' to 'int', possible loss of data
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(262): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  f:\new folder (1)\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(20): warning C4101: 'prev' : unreferenced local variable
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\paint_msg.cpp(11): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  f:\new folder (1)\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(39): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\functions.cpp(99): warning C4715: 'create_menu' : not all control paths return a value
      1>c:\users\vaxoa\onedrive\documents\github\winapi\1\functions.cpp(158): warning C4715: 'select_font' : not all control paths return a value
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(191): warning C4700: uninitialized local variable 'hedit' used
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(41): warning C4700: uninitialized local variable 'lpr' used
-     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(143): warning C4715: 'WinMain' : not all control paths return a value
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\cmd_msg.cpp(263): warning C4700: uninitialized local variable 'hedit' used
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\1\main.cpp(165): warning C4715: 'WinMain' : not all control paths return a value
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -40,4 +42,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.11
+Time Elapsed 00:00:03.96

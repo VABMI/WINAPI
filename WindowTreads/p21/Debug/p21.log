@@ -1,0 +1,15 @@
+﻿Build started 7/24/2018 4:45:21 AM.
+     1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\WindowTreads\p21\p21.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching ".\Debug\p21.unsuccessfulbuild".
+       ClCompile:
+         F:\New Folder (1)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt p21.cpp
+         p21.cpp
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\windowtreads\p21\p21.cpp(108): error C2374: 'Data_Of_Thread_3' : redefinition; multiple initialization
+                 c:\users\vaxoa\onedrive\documents\github\winapi\windowtreads\p21\p21.cpp(107) : see declaration of 'Data_Of_Thread_3'
+     1>c:\users\vaxoa\onedrive\documents\github\winapi\windowtreads\p21\p21.cpp(158): warning C4060: switch statement contains no 'case' or 'default' labels
+     1>Done Building Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\WindowTreads\p21\p21.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.90

@@ -1,49 +1,63 @@
 
 
 
-long __stdcall on_create(HWND hwnd,unsigned int message	, unsigned int wparam,long lparam)
-{
-	static int but=10;
+long __stdcall on_create(HWND hwnd,unsigned int message	, unsigned int wparam,long lparam,int z)
+{		
+	static int but;
+	
+	if(z>0) but=z;
+	
+
+
 	int widthButton1=90;
 	
 	
 
 	bckferi=RGB(40,40,40);
 	textlineferi=RGB(40,40,40);
-	edittextferi=RGB(150,74,96);
+	edittextferi=RGB(210,74,196);
 
 
 RECT r;
 GetClientRect(hwnd,&r);
 
-HWND hw=0;
-HWND Hbutton,childButton;
+HWND hw;
+HWND Hbutton;
 
-Hbutton=CreateWindow("button"," ",WS_CLIPCHILDREN|WS_VISIBLE|WS_CHILD|WS_BORDER,but,3,widthButton1,25,hwnd,(HMENU)butc,0,0);
-
-childButton=CreateWindow("button","X",WS_VISIBLE|WS_CHILD|WS_BORDER,but+90,3,15,25,hwnd,(HMENU)cbutc,0,0);
-int X,Y,W,H;
-but=but+widthButton1+25;
+	Hbutton=CreateWindow("button"," ",WS_CLIPCHILDREN|WS_VISIBLE|WS_CHILD|WS_BORDER,but,3,widthButton1,25,hwnd,(HMENU)butc,0,0);
 butc++;
+
+childButton=CreateWindow("button","X",WS_VISIBLE|WS_CHILD|WS_BORDER,but+widthButton1,3,15,15,hwnd,(HMENU)cbutc,0,0);
+
+
+
+//olde=(WNDPROC)SetWindowLong(childButton,GWL_WNDPROC	,(long)buttonNewPro);
+
+
+ //olde=(WNDPROC)SetWindowLong(childButton,GWL_WNDPROC,(long)buttonNewPro);
+
+//  olde=(WNDPROC)SetWindowLong(hwnd,GWL_WNDPROC,(long)buttonNewPro);
+
 cbutc++;
+but=but+widthButton1+20;
 
 
-X=10,Y=30,W=700,H=500;
 
-hw=CreateWindow("edit","123456789111213",editstyle,X,Y,r.right-20,r.bottom,hwnd,(HMENU)editc,0,0);
+
+
+int X,Y,W,H;
+X=10,Y=40,W=700,H=500;
+
+hw=CreateWindow("edit","123456789111213",editstyle,10,30,r.right-10,r.bottom-30.5,hwnd,(HMENU)editc,0,0);
 editc++;
+
 ////////////////// region //////
 
 RECT rb;
 	HDC hdc=GetDC(Hbutton);
 	GetClientRect(Hbutton,&rb);
 
-	HRGN hrgn;// = CreateRectRgnIndirect(&r);
-	//HBRUSH hbrush = CreateSolidBrush(RGB(200,200,200));
-	//FillRgn(hdc,hrgn, hbrush);
-	//HPEN hPen = CreatePen(PS_DOT,1,RGB(0,255,0));
-
-//	SetWindowRgn(Hbutton,hrgn,1);
+	HRGN hrgn;
 
 
 
@@ -53,6 +67,7 @@ RECT rb;
 
 /////////// create font ////////////////
 /// richedit 
+	/*
 HFONT hfont=create_font(hwnd);
 SendMessage(hw,WM_SETFONT,(UINT)hfont,1);
 
@@ -70,6 +85,7 @@ UINT err=GetLastError();
 
 ///richedit class or rich edit32
 
+*/
 
 return 0;
 }

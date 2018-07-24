@@ -3,55 +3,127 @@
 
 long __stdcall on_cmd(HWND hwnd,unsigned int message,unsigned int wparam,long lparam)
 
-{ int ctrl_id = (unsigned short)wparam;
+{  int ctrl_id = (unsigned short)wparam;
+
+
    int id = (unsigned short)wparam;
+
      	HWND hwn=GetDlgItem(hwnd,70000);
+////======================================///
 	
- 
-	//////////////new ////////////
-		int edtc=70000;
+		int edtc=70001;
 	    int ibhwn2=50001;
+////////////////// DELETE EDIT //////////////
+		int but=10,widthButton1=90;
+		static int ButWithCreateFunc;
+		int countdelete=10;
+		int prev;bool b=false;
 	for(int p=30001;p<=cbutc;p++)
-	{
+	{  
 		if(id==p)
-		{ HWND hwnd2=GetDlgItem(hwnd,70000);
-		  SetWindowPos(hwnd2, HWND_TOP, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE); 
+		{ 
+			
+		  //HWND hwnd2=GetDlgItem(hwnd,editc);
+//		  SetWindowPos(hwnd2, HWND_TOP, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE); 
 
 		  MessageBox(hwnd,"Asdasd","asdasdas",MB_OK);
-	  	  HWND bhwn1=GetDlgItem(hwnd,id);
+	  	  HWND bhwn1=GetDlgItem(hwnd,p);
 		   
 		  HWND bhwn2=GetDlgItem(hwnd,ibhwn2);
 
 		  HWND hwn2=GetDlgItem(hwnd,edtc);
+		  DestroyWindow(hwn2);
 
-  		  DestroyWindow(hwn2);
 		  DestroyWindow(bhwn1);
 		  DestroyWindow(bhwn2);
-
-		 
-
+		  countdelete=countdelete+widthButton1+20; 
+	
+			b=true;
 		}
+		/////////// gilakebis gadaadgileba //////////////
+		if(b)
+		{    
+		
+
+			 HWND buttonX=GetDlgItem(hwnd,p);
+			 HWND button1=GetDlgItem(hwnd,ibhwn2);
+			 HWND editia;
+
+			 buttonX=GetDlgItem(hwnd,p+1);
+			 button1=GetDlgItem(hwnd,ibhwn2+1);
+			 editia=GetDlgItem(hwnd,edtc+1);
+
+
+			 int x=SetWindowPos(button1,0,but,3,widthButton1,25,SWP_DRAWFRAME);
+			  if(x!=1||x!=0) ButWithCreateFunc=but;
+			 SetWindowPos(buttonX,0,but+widthButton1,3,15,15,SWP_DRAWFRAME);
+
+			 SetWindowLong(buttonX,GWL_ID,p);
+			 SetWindowLong(button1,GWL_ID,ibhwn2);
+
+			  SetWindowLong(editia,GWL_ID,edtc);
+
+			  bn=true;
+			 
+//			 SendMessage(buttonX,WM_SETNUMBER,10,0);
+//			SendMessage((buttonX),WM_ENTERIDLE,p, 0);	
+		
+			  
+			
+		}
+		but=but+widthButton1+20;  /////axlandeli 
+		
+
 		ibhwn2++;
 		edtc++;
     }
+	bn=false;
+//////////////////////END EDIT DELETE /////////////////////////////
+///////////// SHOW HIDE EDIT /////////////////////////////////////
+	if(id>=50001&&id<=59999){
+	edtc=70001;
+	for(int p=50001;p<=butc;p++)
+	{
+		if(id==p){
+			
+		HWND edit=GetDlgItem(hwnd,edtc);
+		ShowWindow(edit,SW_SHOW);
+		EDITGLOBAL=edit;
+		}
+		else {
+			HWND edit=GetDlgItem(hwnd,edtc);
+			ShowWindow(edit,SW_HIDE);
+		}
+		edtc++;
+	}
+	}
+//////////// END EDIT SHOW HIDE ////////////////////////////////
 
+	if(id==5001)
+	{
+			HWND edit=GetDlgItem(hwnd,editc-1);
+			ShowWindow(edit,SW_HIDE);
+			ButWithCreateFunc=ButWithCreateFunc-countdelete;
 
-
+			on_create(hwnd,message,wparam,lparam, ButWithCreateFunc);
+	}
 		  
  switch(id)
  
  {
-
-  
-	
+	 //////////////new edit////////////
     case 5001:
-	   	on_create(hwnd,message,wparam,lparam);
+	  // 	on_create(hwnd,message,wparam,lparam);
+
+		
    break;
+
+   /////////////////////////////////////////
 	case 5006:
 
 	hfont_glob=select_font(hwnd);
-	SendMessage(hwn,WM_SETFONT,(UINT)hfont_glob,1);
-
+	SendMessage(EDITGLOBAL,WM_SETFONT,(UINT)hfont_glob,1);
+	InvalidateRect(hwnd,0,1);
 		break;
 	case 5007:
 
@@ -69,7 +141,7 @@ long __stdcall on_cmd(HWND hwnd,unsigned int message,unsigned int wparam,long lp
 	textlineferi=choose_color(hwnd);
 	InvalidateRect(hwn,0,1);
 	  break;
-						//////////////// TExt align //////
+	//////////////// TExt align //////
 	case 5010:
 
 
