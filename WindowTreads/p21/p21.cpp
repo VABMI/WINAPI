@@ -105,7 +105,7 @@ void main()
 	int Data_Of_Thread_1 = 1;            // Data of Thread 1
     int Data_Of_Thread_2 = 2;            // Data of Thread 2
 	int Data_Of_Thread_3 = 3;    
-	int Data_Of_Thread_3 = 4;   // Data of Thread 3
+	int Data_Of_Thread_4 = 4;   // Data of Thread 3
 	HANDLE Handle_Of_Thread_1 = 0;       // variable to hold handle of Thread 1
 	HANDLE Handle_Of_Thread_2 = 0;       // variable to hold handle of Thread 1 
 	HANDLE Handle_Of_Thread_3 = 0;       // variable to hold handle of Thread 1

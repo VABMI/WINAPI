@@ -1,9 +1,9 @@
 ﻿#include "head.h"
 HFONT hfont_global;
 HWND h;
-
-
-
+HBITMAP bvb;
+HCURSOR hCursor;
+HWND hwnd=0;
 			
 	HWND tree;
 	HINSTANCE hInst,g_hInst; // main function handler
@@ -51,63 +51,95 @@ HTREEITEM AddItemToTree(HWND hwndTV, LPSTR lpszItem, int nLevel)
     static HTREEITEM hPrev = (HTREEITEM) TVI_FIRST; 
     static HTREEITEM hPrevRootItem = NULL; 
     static HTREEITEM hPrevLev2Item = NULL; 
+	static HTREEITEM hPrevLev3Item = NULL; 
+	static HTREEITEM hPrevLev4Item = NULL;
+	static HTREEITEM hPrevLev5Item = NULL;
+	static HTREEITEM hPrevLev6Item = NULL;
+hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
+	    HICON hIcon;
+		 hBitMap = (HBITMAP)LoadImage(NULL, "C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\123.bmp", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
+		 bvb= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\LIST.BMP", IMAGE_BITMAP,10,10, LR_LOADFROMFILE);
+
+		 		
+		 ImageList_Add(hImageList,(HBITMAP)bvb,TVSIL_NORMAL);
+
+		 		 SendDlgItemMessage(hwnd,123,TVM_SETIMAGELIST,0,(LPARAM)(HBITMAP)hImageList);
+
+				     TreeView_SetImageList(hwndTV, hImageList, TVSIL_NORMAL); 
+
+				//  SendMessage(hwndTV, TVM_SETIMAGELIST, 0, (LPARAM) hImageList); 
+	/*
+   hBitMap=(HBITMAP)LoadImage(NULL, "C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\123.bmp", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
+ 
+   
+   
+   ImageList_Add(hImageList,hBitMap,NULL);
+   DeleteObject(hBitMap);
+
+		 SendDlgItemMessage(hwnd,123,TVM_SETIMAGELIST,0,(LPARAM)(HBITMAP)hImageList);
+ SendMessage(hwndTV, TVM_SETIMAGELIST, 0, 
+         (LPARAM) hImageList); 
+
+	
+	 */
+
+
+
+
+
     HTREEITEM hti; 
  
-    tvi.mask = TVIF_TEXT | TVIF_IMAGE 
-        | TVIF_SELECTEDIMAGE | TVIF_PARAM; 
+    tvi.mask = TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE |TVIF_CHILDREN; 
  
-    // Set the text of the item. 
+
     tvi.pszText = lpszItem; 
     tvi.cchTextMax = lstrlen(lpszItem); 
- 
-    // Assume the item is not a parent item, so give it a 
-
-    // document image. 
-    tvi.iImage = 0; 
-    tvi.iSelectedImage = 0; 
- 
-    // Save the heading level in the item's application-defined 
-    // data area. 
     tvi.lParam = (LPARAM) nLevel; 
+
+
+    tvi.iImage =0;
+    tvi.iSelectedImage =1;
+
  
     tvins.item = tvi; 
     tvins.hInsertAfter = hPrev; 
- 
-    // Set the parent item based on the specified level. 
+
     if (nLevel == 1) 
         tvins.hParent = TVI_ROOT; 
     else if (nLevel == 2) 
         tvins.hParent = hPrevRootItem; 
     else 
+        tvins.hParent = hPrevLev3Item; 
+    
 
-        tvins.hParent = hPrevLev2Item; 
- 
-    // Add the item to the tree-view control. 
     hPrev = (HTREEITEM) SendMessage(hwndTV, TVM_INSERTITEM, 0, 
          (LPARAM) (LPTV_INSERTSTRUCT) &tvins); 
- 
-    // Save the handle of the item. 
+
     if (nLevel == 1) 
         hPrevRootItem = hPrev; 
     else if (nLevel == 2) 
         hPrevLev2Item = hPrev; 
- 
-    // The new item is a child item. Give the parent item a 
-    // closed folder bitmap to indicate it now has child items. 
+	  else if (nLevel == 3) 
+        hPrevLev3Item = hPrev; 
+	 else if (nLevel == 4) 
+        hPrevLev4Item = hPrev;
+	   else if (nLevel == 5) 
+        hPrevLev5Item = hPrev;
 
-    if (nLevel > 1) { 
+    if (nLevel > 1)
+	{ 
         hti = TreeView_GetParent(hwndTV, hPrev); 
         tvi.mask = TVIF_IMAGE | TVIF_SELECTEDIMAGE; 
         tvi.hItem = hti; 
-        tvi.iImage =0; 
-        tvi.iSelectedImage = 0; 
+        tvi.iImage =1; 
+        tvi.iSelectedImage = 1; 
         TreeView_SetItem(hwndTV, &tvi); 
     } 
  
     return hPrev; 
 } 
  
-
+ 
 
 
 void create(HWND hwnd,UINT msg,WPARAM wp,LPARAM lp)
@@ -206,14 +238,16 @@ void create(HWND hwnd,UINT msg,WPARAM wp,LPARAM lp)
 				tvinsert.item.iSelectedImage=0; 
 
 					 Parent=(HTREEITEM)SendDlgItemMessage((HWND)Parent,123,TVM_INSERTITEM,0,(LPARAM)&tvinsert);
-					 */
-					 AddItemToTree(hwnd_tv,"saqartvelo",1);
+					*/
+				 AddItemToTree(hwnd_tv,"saqartvelo1",1);
 					  AddItemToTree(hwnd_tv,"saqartvelo2",2);
 					   AddItemToTree(hwnd_tv,"saqartvelo3",3);
-					     AddItemToTree(hwnd_tv,"saqartvelo2",1);
-						 AddItemToTree(hwnd_tv,"saqartvelo21",2);
-						  AddItemToTree(hwnd_tv,"saqartvelo21",2);
-					      AddItemToTree(hwnd_tv,"saqartvelo22",3);
+					     AddItemToTree(hwnd_tv,"saqartvelo4",4);
+						    AddItemToTree(hwnd_tv,"saqartvelo5",4);
+							   AddItemToTree(hwnd_tv,"saqartvelo6",4);
+					//	 AddItemToTree(hwnd_tv,"saqartvelo21",2);
+					//	  AddItemToTree(hwnd_tv,"saqartvelo21",2);
+					//      AddItemToTree(hwnd_tv,"saqartvelo22",3); 
 						
 					 /*
 ////======================================================//////////////////////////////////////////////////////
@@ -235,7 +269,7 @@ void create(HWND hwnd,UINT msg,WPARAM wp,LPARAM lp)
 
 //======================== 22222222222222=====
 
-BOOL InitTreeViewImageLists(HWND hwndTV) 
+BOOL InitTreeViewImageLists(HWND hwndTV,HWND hw) 
 { 
     HIMAGELIST himl;  // handle to image list 
     HBITMAP hbmp;     // handle to bitmap 
@@ -244,13 +278,21 @@ BOOL InitTreeViewImageLists(HWND hwndTV)
     if (hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10)) return 0; 
 
     // Add the open file, closed file, and document bitmaps. 
-    hbmp = LoadBitmap(g_hInst, MAKEINTRESOURCE("C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\resource\\bitmap3.bmp")); 
- int   g_nOpen = ImageList_Add(hImageList, hbmp, (HBITMAP)NULL); 
+    hbmp = (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
+	bvb= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
+	if(!hbmp)
+	{
+
+	//	MessageBox(hw,"No Items in TrtryuturyueeView","Error",MB_OK|MB_ICONINFORMATION);
+	}
+ int   g_nOpen = ImageList_Add(hImageList, bvb, (HBITMAP)NULL); 
+
     DeleteObject(hbmp); 
 
 
     // Fail if not all of the images were added. 
-//   if (ImageList_GetImageCount(hImageList) 2)return FALSE; 
+  //if (ImageList_GetImageCount(hImageList) )
+//		MessageBox(hw,"No Items in TrtryuturyueeView","Error",MB_OK);
 
     // Associate the image list with the tree-view control. 
     TreeView_SetImageList(hwndTV, hImageList, TVSIL_NORMAL); 
@@ -258,7 +300,7 @@ BOOL InitTreeViewImageLists(HWND hwndTV)
     return TRUE; 
 }
 long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsigned int wparam,long lparam)
-{	
+{	 HWND hwndtree=GetDlgItem(hwnd,123);
 	switch(message)
 	{
 			case WM_INITDIALOG: 
@@ -269,13 +311,33 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 		}
 		break;
 		case WM_CREATE:
-		create(hwnd, message,wparam,lparam);
+		create(hwnd, message,wparam,lparam);	/*
+		
+			    resourcesTreeView.hwnd = GetDlgItem(hwnd, ID_RESOURCES_TREE_VIEW);
+    resourcesTreeView.insert.hParent = NULL;
+    resourcesTreeView.insert.hInsertAfter = TVI_ROOT;
+    resourcesTreeView.insert.item.mask = TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE;
+resourcesTreeView.insert.item.pszText = "Parent";
+    resourcesTreeView.insert.item.iImage = 0;
+    resourcesTreeView.insert.item.iSelectedImage = 1;
+    resourcesTreeView.parent = (HTREEITEM)SendDlgItemMessage(hwnd, ID_RESOURCES_TREE_VIEW, TVM_INSERTITEM, 0, (LPARAM)&resourcesTreeView.insert);
+    resourcesTreeView.root = resourcesTreeView.parent;
+    resourcesTreeView.before = resourcesTreeView.parent;
+    UpdateWindow(hwnd);
+
+	*/
+
+
 		break;
 		
 		case WM_COMMAND:
-	
-		if(wparam==3){
-		}
+	switch(LOWORD(wparam))
+	{
+
+				
+
+	}
+//	MessageBox(hwnd,"No Items in TrtryuturyueeView","Error",MB_OK|MB_ICONINFORMATION);
 		break;
 		
 		case WM_LBUTTONDBLCLK:
@@ -291,7 +353,38 @@ long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsi
 	
 		break;
 		case WM_NOTIFY:
+
+
+
+
+
+
+
+	//		if(wparam==10)
+				switch(LOWORD(wparam))
+				{
+					
+			//		MessageBox(hwnd,"No Items in TreeView","Error",MB_OK|MB_ICONINFORMATION);
+
+
+				}
+			if(((LPNMHDR)lparam)->code == NM_CLICK) 
+			{
+
 			
+
+	
+
+			Selected=(HTREEITEM)SendDlgItemMessage (hwndtree,1,TVM_GETNEXTITEM,TVGN_DROPHILITE,0);
+				if(Selected==NULL)
+				{
+				//		MessageBox(hwnd,"No Items in TreeView","Error",MB_OK|MB_ICONINFORMATION);
+					break;
+				}	
+
+
+
+			}
 			break;
 		
 	}
@@ -300,7 +393,7 @@ return DefWindowProc(hwnd,message,wparam,lparam);
 
 void main()
 {
-HWND hwnd=0;
+	
 int X,Y,W,H;
 ULONG style=0;
 WNDCLASS wc;
@@ -310,6 +403,10 @@ wc.lpfnWndProc=(WNDPROC)&window_main_function_chvenia;
 wc.lpszClassName="12";
 wc.hbrBackground=(HBRUSH)CreateSolidBrush(RGB(200,200,200));
 wc.hIcon=(HICON)LoadImage(0,"c:\\1.ico",IMAGE_ICON,16,16,LR_LOADFROMFILE);
+
+
+
+
 	if(RegisterClass(&wc)==0)
 	{
 	MessageBox(hwnd,"RegisterClass error",0,0);
@@ -319,6 +416,23 @@ wc.hIcon=(HICON)LoadImage(0,"c:\\1.ico",IMAGE_ICON,16,16,LR_LOADFROMFILE);
 style=WS_VISIBLE|WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN;
 X=10;Y=30;W=700;H=500;
 hwnd=CreateWindow(wc.lpszClassName,"Main",style|SW_MAXIMIZE,X,Y,W,H,0,0,0,0);
+
+HWND buton=CreateWindow("button","Main",WS_VISIBLE|WS_CHILD|BS_BITMAP,300,Y,80,80,hwnd,(HMENU)0,0,0);
+
+ bvb= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
+
+		//	 SendMessage(bvb, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hImage);
+
+SendMessage(buton, (UINT)BM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)bvb);
+
+
+
+
+
+
+HCURSOR Cur = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\Debug\\too994.ani");
+SendMessage(buton, WM_SETCURSOR, 0, (LPARAM) Cur);
+SetClassLong (buton, GCL_HCURSOR, (LONG) Cur);
 MSG msg;
 int s=1;
 	while(s!=0)
@@ -339,13 +453,18 @@ HWND CreateATreeView(HWND hwndParent)
   
 	///// | 0x0008|0x0010
 
-	hwndTV = CreateWindow( WC_TREEVIEW,TEXT("Tree View"), TVS_LINESATROOT|TVS_HASBUTTONS|WS_VISIBLE | TVS_CHECKBOXES|WS_CHILD|WS_BORDER|TVS_HASLINES|TVS_EDITLABELS ,10,20, 200, 700, hwndParent, (HMENU)123, NULL, NULL);
-	if (InitTreeViewImageLists(hwndTV)) // || !InitTreeViewItems(hwndTV))
-    { 
-        DestroyWindow(hwndTV); 
-        return FALSE; 
+	hwndTV = CreateWindow( WC_TREEVIEW,TEXT("Tree View"), TVS_DISABLEDRAGDROP|TVS_TRACKSELECT|TVS_LINESATROOT|TVS_HASBUTTONS|TVS_NONEVENHEIGHT|WS_VISIBLE |TVS_TRACKSELECT|TVS_INFOTIP| TVS_TRACKSELECT|WS_CHILD|WS_BORDER|TVS_HASLINES|TVS_EDITLABELS ,10,20, 200, 700, hwndParent, (HMENU)123, NULL, NULL);
+
+
+
+
+    {  //InitTreeViewImageLists(hwndTV,hwndParent)
+    //    DestroyWindow(hwndTV); 
+       // return FALSE; 
     } 
 
-	SendDlgItemMessage(hwndParent,123,TVM_SETIMAGELIST,0,(LPARAM)hImageList);
+
+
+//	SendDlgItemMessage(hwndParent,123,TVM_SETIMAGELIST,0,(LPARAM)hImageList);
     return hwndTV;
 } 

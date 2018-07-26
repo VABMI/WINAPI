@@ -12,3 +12,8 @@
 //CreateWindowEx(WS_EX_CLIENTEDGE, WC_TREEVIEW, TEXT("TreeView"), WS_CHILD | WS_VISIBLE | TVS_HASBUTTONS | TVS_LINESATROOT, 10, 10, 400, 400, hWnd, reinterpret_cast<HMENU>(ID_TREEVIEW), GetModuleHandle(NULL), NULL);
 
 
+#include <string>
+#include <fstream>
+#include <winver.h>
+#include <stdio.h>
+#include "commctrl.h"
