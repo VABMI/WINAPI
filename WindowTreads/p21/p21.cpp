@@ -44,7 +44,7 @@ DWORD WINAPI Thread_no_1( LPVOID lpParam )
 		DisplayMessage (hStdout, "Thread_no_1", Data, count);
 	}
     
-	return 0; 
+	return 1; 
 } 
 
 //-------------------------------------------
@@ -115,7 +115,14 @@ void main()
 
  	// Create thread 1.
     Handle_Of_Thread_1 = CreateThread( NULL, 0, Thread_no_1, &Data_Of_Thread_1, 0, NULL);  
-    if ( Handle_Of_Thread_1 == NULL)  ExitProcess(Data_Of_Thread_1);
+	if ( Handle_Of_Thread_1 == NULL)  {
+		
+		
+		ExitProcess(Data_Of_Thread_1);
+	
+	
+	
+	}
     
 	// Create thread 2.
 	Handle_Of_Thread_2 = CreateThread( NULL, 0, Thread_no_2, &Data_Of_Thread_2, 0, NULL);  
@@ -123,8 +130,11 @@ void main()
     
 	// Create thread 3.
 	Handle_Of_Thread_3 = CreateThread( NULL, 0, Thread_no_3, &Data_Of_Thread_3, 0, NULL);  
-    if ( Handle_Of_Thread_3 == NULL)  ExitProcess(Data_Of_Thread_3);
-
+    if ( Handle_Of_Thread_3 == NULL) {
+		
+		
+		ExitProcess(Data_Of_Thread_3);
+	}
 
 
 

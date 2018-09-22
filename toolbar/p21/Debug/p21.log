@@ -1,4 +1,4 @@
-﻿Build started 7/24/2018 1:49:20 PM.
+﻿Build started 8/29/2018 10:41:46 PM.
      1>Project "C:\Users\vaxoa\OneDrive\Documents\GitHub\WINAPI\toolbar\p21\p21.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating ".\Debug\p21.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -23,4 +23,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.64
+Time Elapsed 00:00:05.14

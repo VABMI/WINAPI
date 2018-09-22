@@ -44,13 +44,7 @@ HINSTANCE hinstance_main;            //globally track hinstance of the window
 #define IDM_PROPETIES 1708  
 #define IDM_folder 1709  
 HWND tbar;               
-//tool bar window object
-/*
-The following expansion fills out a structure that will be used to create the
-tool bar. The first and fifth lines are seperators in the toolbar, while the
-middle three create button by selecting a bitmap (STD_xxxx) and then assigning
-a UINT (defined above) for message handling.
-*/
+
 static TBBUTTON tbButtons[] = {
   { {0}, {0}, {TBSTATE_ENABLED}, {TBSTYLE_SEP}, {0}, {0}, {0}},
   { {STD_FILENEW}, {IDM_NEW}, {TBSTATE_ENABLED}, {TBSTYLE_BUTTON}, {0}, {0}, {0}} ,
@@ -105,10 +99,7 @@ int main()
 	if (!RegisterClassEx(&winclass))
 		return(0);
 
-	if (!(hwnd = CreateWindowEx(NULL,WIN_CLASS_NAME,
-      "Tutorial Window",
-		WS_TILEDWINDOW | WS_MAXIMIZEBOX | WS_SIZEBOX ,
-		0 ,0 ,800,500,NULL,NULL,0,NULL)))
+	if (!(hwnd = CreateWindowEx(NULL,WIN_CLASS_NAME,"Tutorial Window",WS_TILEDWINDOW | WS_MAXIMIZEBOX | WS_SIZEBOX ,0 ,0 ,800,500,NULL,NULL,0,NULL)))
 		return(0);
 
   InitCommonControls();

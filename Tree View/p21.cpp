@@ -55,6 +55,7 @@ HTREEITEM AddItemToTree(HWND hwndTV, LPSTR lpszItem, int nLevel)
 	static HTREEITEM hPrevLev4Item = NULL;
 	static HTREEITEM hPrevLev5Item = NULL;
 	static HTREEITEM hPrevLev6Item = NULL;
+	/*
 hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 	    HICON hIcon;
 		 hBitMap = (HBITMAP)LoadImage(NULL, "C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\123.bmp", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
@@ -67,8 +68,8 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 
 				     TreeView_SetImageList(hwndTV, hImageList, TVSIL_NORMAL); 
 
-				//  SendMessage(hwndTV, TVM_SETIMAGELIST, 0, (LPARAM) hImageList); 
-	/*
+				  SendMessage(hwndTV, TVM_SETIMAGELIST, 0, (LPARAM) hImageList); 
+	
    hBitMap=(HBITMAP)LoadImage(NULL, "C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\123.bmp", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
  
    
@@ -89,7 +90,7 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 
     HTREEITEM hti; 
  
-    tvi.mask = TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE |TVIF_CHILDREN; 
+    tvi.mask = TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE|TVIS_STATEIMAGEMASK|TVIS_OVERLAYMASK|TVIS_USERMASK ; 
  
 
     tvi.pszText = lpszItem; 
@@ -97,7 +98,7 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
     tvi.lParam = (LPARAM) nLevel; 
 
 
-    tvi.iImage =0;
+    tvi.iImage =1;
     tvi.iSelectedImage =1;
 
  
@@ -107,25 +108,34 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
     if (nLevel == 1) 
         tvins.hParent = TVI_ROOT; 
     else if (nLevel == 2) 
-        tvins.hParent = hPrevRootItem; 
-    else 
-        tvins.hParent = hPrevLev3Item; 
-    
-
-    hPrev = (HTREEITEM) SendMessage(hwndTV, TVM_INSERTITEM, 0, 
-         (LPARAM) (LPTV_INSERTSTRUCT) &tvins); 
-
+	{
+        tvins.hParent = hPrevRootItem;
+	}
+     else if(nLevel==3)
+        tvins.hParent = hPrevLev2Item; 
+	 else if (nLevel == 4) 
+			 tvins.hParent=hPrevLev3Item;
+     else if (nLevel == 5) 
+		   tvins.hParent = hPrevLev4Item; 
+	 else if (nLevel == 6) 
+			   tvins.hParent = hPrevLev5Item; 
+    hPrev = (HTREEITEM) SendMessage(hwndTV, TVM_INSERTITEM,0,(LPARAM) (LPTV_INSERTSTRUCT) &tvins); 
+	
     if (nLevel == 1) 
         hPrevRootItem = hPrev; 
     else if (nLevel == 2) 
-        hPrevLev2Item = hPrev; 
+	{
+        hPrevLev2Item = hPrev;
+	}
 	  else if (nLevel == 3) 
         hPrevLev3Item = hPrev; 
 	 else if (nLevel == 4) 
         hPrevLev4Item = hPrev;
 	   else if (nLevel == 5) 
         hPrevLev5Item = hPrev;
-
+	    else if (nLevel == 6) 
+        hPrevLev6Item = hPrev;
+		/*
     if (nLevel > 1)
 	{ 
         hti = TreeView_GetParent(hwndTV, hPrev); 
@@ -135,7 +145,7 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
         tvi.iSelectedImage = 1; 
         TreeView_SetItem(hwndTV, &tvi); 
     } 
- 
+ */
     return hPrev; 
 } 
  
@@ -239,12 +249,32 @@ void create(HWND hwnd,UINT msg,WPARAM wp,LPARAM lp)
 
 					 Parent=(HTREEITEM)SendDlgItemMessage((HWND)Parent,123,TVM_INSERTITEM,0,(LPARAM)&tvinsert);
 					*/
-				 AddItemToTree(hwnd_tv,"saqartvelo1",1);
-					  AddItemToTree(hwnd_tv,"saqartvelo2",2);
-					   AddItemToTree(hwnd_tv,"saqartvelo3",3);
-					     AddItemToTree(hwnd_tv,"saqartvelo4",4);
-						    AddItemToTree(hwnd_tv,"saqartvelo5",4);
-							   AddItemToTree(hwnd_tv,"saqartvelo6",4);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\witeli.BMP",1);  
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\76.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\92.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\67.bmp",1);
+					  
+
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\97.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\23.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\66.bmp",1);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\68.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\87.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\70.bmp",1);
+					  
+
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\8.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\83.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\69.bmp",1);
+				 
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\64.bmp",1);
+				  AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\25.bmp",1);
+				 AddItemToTree(hwnd_tv,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\43.bmp",1);
+
 					//	 AddItemToTree(hwnd_tv,"saqartvelo21",2);
 					//	  AddItemToTree(hwnd_tv,"saqartvelo21",2);
 					//      AddItemToTree(hwnd_tv,"saqartvelo22",3); 
@@ -300,7 +330,13 @@ BOOL InitTreeViewImageLists(HWND hwndTV,HWND hw)
     return TRUE; 
 }
 long __stdcall window_main_function_chvenia(HWND hwnd,unsigned int message, unsigned int wparam,long lparam)
-{	 HWND hwndtree=GetDlgItem(hwnd,123);
+{	
+	HBITMAP bvb;
+	 char path[100];
+	HWND hwndtree=GetDlgItem(hwnd,123);
+	HWND hstatic=GetDlgItem(hwnd,31);
+	RECT r;
+	
 	switch(message)
 	{
 			case WM_INITDIALOG: 
@@ -357,14 +393,91 @@ resourcesTreeView.insert.item.pszText = "Parent";
 
 
 
+			switch(wparam)
+			{
+			case 123:
+				{
+				
+					switch(((LPNMHDR)lparam)->code)
+					{
 
+					case TVN_GETDISPINFO:
+						{/*
+						
+						TV_DISPINFO FAR *ptvdi =(TV_DISPINFO FAR *)lparam;
+						TV_DISPINFO *pTVDispInfo(TV_DISPINFO*)lparam;
+						pTVDispInfo->item->pszText;
+						MessageBox(0,pTVDispInfo->item->pszText,0,0);
+						*/
+						
+						}
+						
+						break;
+						case TVN_DELETEITEM:
+					
+					//	MessageBox(hwnd,"asdsad","asdas",0);
+						
+						break;
+						case TVN_ITEMCHANGING:
+					//		MessageBox(hwnd,"asdsad","asdas",0);
+							break;
+
+						case TVN_SELCHANGED:
+						{
+
+							char str[455];
+							NMTREEVIEW* pnmtv =(LPNMTREEVIEW)lparam;
+							TVITEM item;
+							item.hItem=pnmtv->itemNew.hItem;
+							item.mask=TVIF_TEXT;
+							item.pszText=str;
+							item.cchTextMax=455;
+							SendMessage(GetDlgItem(hwnd,123),TVM_GETITEM,0,(LPARAM)&item);
+
+							GetClientRect(hwnd,&r);
+
+						//		MessageBox(0,str,0,0);
+				  
+							 int vco=0;
+							for(int i=0;i<=strlen(str);i++)
+
+							{
+								
+								if(str[i]==(char)92)
+								{   
+									path[vco]=(char)92;
+									vco++;
+									
+								}
+
+								path[vco]=str[i];
+								vco++;
+							}
+
+						  
+							bvb= (HBITMAP)LoadImage(NULL,path, IMAGE_BITMAP,r.right-200,r.bottom-1, LR_LOADFROMFILE);
+								
+							
+
+							SendMessage(hstatic,STM_SETIMAGE,IMAGE_BITMAP,(LPARAM)bvb);
+						}
+
+						break;
+
+					}
+				
+				
+				}
+				break;
+
+			}
 
 
 	//		if(wparam==10)
 				switch(LOWORD(wparam))
 				{
 					
-			//		MessageBox(hwnd,"No Items in TreeView","Error",MB_OK|MB_ICONINFORMATION);
+				//5	MessageBox(hwnd,"No Items in TreeView","Error",MB_OK|MB_ICONINFORMATION);
 
 
 				}
@@ -373,7 +486,7 @@ resourcesTreeView.insert.item.pszText = "Parent";
 
 			
 
-	
+		//	MessageBox(hwnd,"No Items in TreeView","Error",MB_OK|MB_ICONINFORMATION);
 
 			Selected=(HTREEITEM)SendDlgItemMessage (hwndtree,1,TVM_GETNEXTITEM,TVGN_DROPHILITE,0);
 				if(Selected==NULL)
@@ -413,17 +526,17 @@ wc.hIcon=(HICON)LoadImage(0,"c:\\1.ico",IMAGE_ICON,16,16,LR_LOADFROMFILE);
 	return;
 	}
 //mtavari fanjara:
-style=WS_VISIBLE|WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN;
+style=WS_VISIBLE|WS_OVERLAPPED|WS_CLIPCHILDREN;
 X=10;Y=30;W=700;H=500;
 hwnd=CreateWindow(wc.lpszClassName,"Main",style|SW_MAXIMIZE,X,Y,W,H,0,0,0,0);
 
-HWND buton=CreateWindow("button","Main",WS_VISIBLE|WS_CHILD|BS_BITMAP,300,Y,80,80,hwnd,(HMENU)0,0,0);
+ HWND buton;//=CreateWindow("button","Main",WS_VISIBLE|WS_CHILD|BS_BITMAP,300,Y,80,80,hwnd,(HMENU)0,0,0);
 
  bvb= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\MARBLES.BMP", IMAGE_BITMAP,300,300, LR_LOADFROMFILE);
 
 		//	 SendMessage(bvb, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hImage);
 
-SendMessage(buton, (UINT)BM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)bvb);
+//SendMessage(buton, (UINT)BM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)bvb);
 
 
 
@@ -431,8 +544,14 @@ SendMessage(buton, (UINT)BM_SETIMAGE,   (WPARAM)IMAGE_BITMAP, (LPARAM)bvb);
 
 
 HCURSOR Cur = LoadCursorFromFile("C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\icon\\Debug\\too994.ani");
-SendMessage(buton, WM_SETCURSOR, 0, (LPARAM) Cur);
-SetClassLong (buton, GCL_HCURSOR, (LONG) Cur);
+//SendMessage(buton, WM_SETCURSOR, 0, (LPARAM) Cur);
+//SetClassLong (buton, GCL_HCURSOR, (LONG) Cur);
+
+	CreateWindow("Static","asdasda",WS_VISIBLE|WS_BORDER|WS_CHILD|SS_BITMAP,202,0,300,300,hwnd,(HMENU)31,0,0);
+
+
+
+
 MSG msg;
 int s=1;
 	while(s!=0)
@@ -453,10 +572,15 @@ HWND CreateATreeView(HWND hwndParent)
   
 	///// | 0x0008|0x0010
 
-	hwndTV = CreateWindow( WC_TREEVIEW,TEXT("Tree View"), TVS_DISABLEDRAGDROP|TVS_TRACKSELECT|TVS_LINESATROOT|TVS_HASBUTTONS|TVS_NONEVENHEIGHT|WS_VISIBLE |TVS_TRACKSELECT|TVS_INFOTIP| TVS_TRACKSELECT|WS_CHILD|WS_BORDER|TVS_HASLINES|TVS_EDITLABELS ,10,20, 200, 700, hwndParent, (HMENU)123, NULL, NULL);
+	hwndTV = CreateWindow( WC_TREEVIEW,TEXT("Tree View"),0x5010|TVIF_IMAGE| TVS_DISABLEDRAGDROP|TVS_TRACKSELECT|TVS_LINESATROOT|TVS_HASBUTTONS|TVS_NONEVENHEIGHT|WS_VISIBLE |TVS_TRACKSELECT|TVS_INFOTIP| TVS_TRACKSELECT|WS_CHILD|WS_BORDER|TVS_HASLINES|TVS_EDITLABELS ,1,0, 200, 700, hwndParent, (HMENU)123, NULL, NULL);
 
 
+	  
+						HBITMAP	bvb= (HBITMAP)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Documents\\GitHub\\WINAPI\\Tree View\\1200x900\\43.bmp", IMAGE_BITMAP,200,100, LR_LOADFROMFILE);
+								
+							
 
+							SendMessage(hwndTV,STM_SETIMAGE,IMAGE_BITMAP,(LPARAM)bvb);
 
     {  //InitTreeViewImageLists(hwndTV,hwndParent)
     //    DestroyWindow(hwndTV); 
