@@ -90,7 +90,7 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 
     HTREEITEM hti; 
  
-    tvi.mask = TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE|TVIS_STATEIMAGEMASK|TVIS_OVERLAYMASK|TVIS_USERMASK ; 
+    tvi.mask = TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE;//|TVIS_STATEIMAGEMASK|TVIS_OVERLAYMASK|TVIS_USERMASK ; 
  
 
     tvi.pszText = lpszItem; 
@@ -100,10 +100,13 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 
     tvi.iImage =1;
     tvi.iSelectedImage =1;
-
- 
+	
+	tvins.item.iImage=1;
     tvins.item = tvi; 
     tvins.hInsertAfter = hPrev; 
+	tvins.item.mask=TVIF_TEXT | TVIF_IMAGE| TVIF_SELECTEDIMAGE;
+	tvins.item.iImage=2;
+	tvins.item.iSelectedImage=2;
 
     if (nLevel == 1) 
         tvins.hParent = TVI_ROOT; 
@@ -155,9 +158,40 @@ hImageList=ImageList_Create(16,16,ILC_COLOR16,2,10);
 void create(HWND hwnd,UINT msg,WPARAM wp,LPARAM lp)
 {
 
+
+	HWND tvHandle=CreateATreeView(hwnd);
+
+	HIMAGELIST imageList = ::ImageList_Create(10,10,
+                                          ILC_COLORDDB | ILC_MASK,
+                                          1,
+                                         100);
+
+	HICON icon;
+
+icon	= (HICON)LoadImage(NULL,"C:\\Users\\vaxoa\\OneDrive\\Desktop\\icon\\Itzikgur-My-Seven-Downloads-2.ico", IMAGE_ICON,10,10, LR_LOADFROMFILE);
+		
+if(icon){
+
+
+ImageList_AddIcon(imageList, icon);
+
+}
+
+		if(ImageList_GetImageCount(imageList) == 1)
+{
+
+
+	//MessageBox(hwnd,"Asdsa","Asdsad",0);
+	SendMessage(tvHandle, TVM_SETIMAGELIST,(WPARAM)0, (LPARAM)imageList);
+
+
+
+		}
+// load icons and add them to ImageList
+
 	//=====================================================//
 	
-	CreateATreeView(hwnd);
+	
 
 	/*
 	

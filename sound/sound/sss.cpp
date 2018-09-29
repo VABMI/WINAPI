@@ -1,6 +1,36 @@
 ﻿
 
 
+
+
+#include <iostream>
+#include <windows.h>
+#include <string>
+#include <fstream>
+#include <mmsystem.h>
+#pragma comment (lib, "winmm.lib")
+using namespace std;
+
+int main(){while ( 1 ){
+	long int A;
+	cout << "\t0 = EXIT\n"
+			"\t1 = STOP\n"
+			"\t2 = PAUSE\n"
+			"\t3 = PLAY\n"; 
+	cin >> A;
+	system ("CLS");
+	if (A == 0){ exit(EXIT_SUCCESS); }
+	if (A == 1){ PlaySound(0, 0, 0); cout << "To restart music: ";system ("PAUSE"); }
+	if (A == 2){mciSendString("pause MY_SND", NULL, 0, NULL); system("pause");}
+	if (A == 3){	PlaySound(TEXT("C:\\Users\\vaxoa\\OneDrive\\Desktop\\as.wav"), NULL, SND_ASYNC|SND_FILENAME|SND_LOOP|SND_NOWAIT);
+ }
+	}
+}
+
+
+
+
+/*
 #include <iostream>
 #include <windows.h>
 #include <mmsystem.h>
@@ -8,7 +38,7 @@
 
 using namespace std;
 
-/*
+
 int main()
 {
 	
@@ -17,9 +47,15 @@ int main()
 	
 	return 0;
 }
-
 */
 
+
+
+
+
+
+
+/*
 
 #include <conio.h>
 
@@ -45,3 +81,5 @@ int main ()
    FSOUND_Sample_Free (handle);
    FSOUND_Close();
 }
+
+*/
